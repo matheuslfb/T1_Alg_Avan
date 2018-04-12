@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
-public class Conjuntos {
+public class Conjuntos implements Comparable<Conjuntos>{
 
 	ArrayList<Intervalo> conjunto = new ArrayList<>();
-
 
 	// classe intervalo, que possui ts e tf como atributos
 	class Intervalo {
@@ -54,34 +52,59 @@ public class Conjuntos {
 
 			}
 		}
-
 		return conjunto;
 	}
+	
+	
+	
+	
+	
 
-	public ArrayList<Intervalo> subOtimo(Conjuntos c) {
+	public ArrayList<Intervalo> subOtimo(Conjuntos c) { // ts crescente ou menor intervalo
+		
+		c.geraIntervalo();
+		
+		
+		
 		ArrayList<Intervalo> subOtimo = new ArrayList<>();
 
 		for (int i = 0; i < c.geraIntervalo().size(); i++) {
-			int aux = c.geraIntervalo().get(i).getTs();
-			if(c.geraIntervalo().get(i).getTs() < 0){
-				
-			}
 
 			subOtimo.add(c.geraIntervalo().get(i));
 		}
 
 		return subOtimo;
 	}
-
-	public ArrayList<Intervalo> otimo(Conjuntos c) {
+	
+	
+	public ArrayList<Intervalo> otimo(Conjuntos c) { // ordenar TF em ordem crescente
 		ArrayList<Intervalo> otimo = new ArrayList<>();
 
+		c.geraIntervalo().sort(null);
 		for (int i = 0; i < c.geraIntervalo().size(); i++) {
-
+			
 			otimo.add(c.geraIntervalo().get(i));
+//
+//			Intervalo aux = c.geraIntervalo().get(i);
+//			Intervalo aux2 = c.geraIntervalo().get(i);
+//			if (aux.getTf() < aux2.getTf()) {
+//				otimo.add(aux);
+//			}
+//			
 		}
 
 		return otimo;
+	}
+
+	@Override
+	public int compareTo(Conjuntos o) {
+		
+		
+		if(o.geraIntervalo()) {
+			return -1;
+		}
+		if()
+		return 0;
 	}
 
 }

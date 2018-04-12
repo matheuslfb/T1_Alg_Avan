@@ -2,27 +2,33 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /*
- * 1) Desenvolva um gerador aleatório de intervalos. Use uma distribuição uniforme para escolher
+ * 1) Desenvolva um gerador aleatï¿½rio de intervalos. Use uma distribuiï¿½ï¿½o uniforme para escolher
  *	 os tempos iniciais e finais. Certifique-se de que para todo intervalo i gerado tsi < tfi.
  * 
  * 2) Use o gerador para criar 10 conjuntos com 10^6 intervalos
- *  cada tal que tf de cada intervalo não exceda 1000.
+ *  cada tal que tf de cada intervalo nï¿½o exceda 1000.
  * 
- * 3) Escolha e implemente uma estratégia gulosa sub-ótima e a estratégia gulosa ótima.
+ * 3) Escolha e implemente uma estratï¿½gia gulosa sub-ï¿½tima e a estratï¿½gia gulosa ï¿½tima.
  * 
  * 4) Compare os dois algoritmos nos 10 conjuntos de intervalos criados.
- *  A comparação pode ser feita através da média e do desvio padrão 
- *	 de cada execução.
+ *  A comparaï¿½ï¿½o pode ser feita atravï¿½s da mï¿½dia e do desvio padrï¿½o 
+ *	 de cada execuï¿½ï¿½o.
  */
 
 public class app {
 
 	public static void main(String[] args) {
 
-		for(int i = 0; i<10; i++){
-			Conjuntos c = new Conjuntos();
-			System.out.println(c.geraIntervalo());
-		}
+//		for(int i = 0; i<10; i++){
+//			Conjuntos c = new Conjuntos();
+//			System.out.println(c.geraIntervalo());
+//		}
+//		
+		Conjuntos c = new Conjuntos();
+		c.geraIntervalo();
+		
+		System.out.println(c.otimo(c));
+		
 		
 
 	}
