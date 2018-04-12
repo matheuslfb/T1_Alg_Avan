@@ -1,42 +1,29 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/*
+ * 1) Desenvolva um gerador aleatório de intervalos. Use uma distribuição uniforme para escolher
+ *	 os tempos iniciais e finais. Certifique-se de que para todo intervalo i gerado tsi < tfi.
+ * 
+ * 2) Use o gerador para criar 10 conjuntos com 10^6 intervalos
+ *  cada tal que tf de cada intervalo não exceda 1000.
+ * 
+ * 3) Escolha e implemente uma estratégia gulosa sub-ótima e a estratégia gulosa ótima.
+ * 
+ * 4) Compare os dois algoritmos nos 10 conjuntos de intervalos criados.
+ *  A comparação pode ser feita através da média e do desvio padrão 
+ *	 de cada execução.
+ */
+
 public class app {
 
-	private int ts, tf;
-
-	private static ArrayList<Intervalo> conjunto = new ArrayList<>();
-	static Random n = new Random();
-
-	private static void gerador() {
-
-		for (int i = 0; i < 999999; i++) {			
-			conjunto.add(i, new Intervalo());
-//			System.out.println(conjunto.get(i).toString());
-		}
-		
-		
-
-		for (int i = 0; i < conjunto.size(); i++) {
-			int num = n.nextInt(1000); // seta o random
-
-			conjunto.get(i).setTs(num); // TS recebe o random
-
-			if (num < conjunto.get(i).getTs()) { // verifica se TS < TF
-				conjunto.get(i).setTf(num); //
-			}
-		}
-
-	}
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		 gerador();
-		for (Intervalo x : conjunto) {
-			System.out.println("TS: " + x.getTs());
-			System.out.println("TF: " + x.getTf());
+		for(int i = 0; i<10; i++){
+			Conjuntos c = new Conjuntos();
+			System.out.println(c.geraIntervalo());
 		}
+		
 
 	}
 
