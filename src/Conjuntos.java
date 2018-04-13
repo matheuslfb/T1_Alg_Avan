@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 /*
  * @author Matheus Lima Ferreira
  * @date 15/04/2018
@@ -8,6 +7,7 @@ import java.util.*;
  */
 public class Conjuntos {
 
+	private static final ArrayList<Intervalo> subOtimo = null;
 	ArrayList<Intervalo> conjunto = new ArrayList<>();
 
 	// classe intervalo, que possui ts e tf como atributos
@@ -19,7 +19,7 @@ public class Conjuntos {
 	public ArrayList<Intervalo> geraIntervalo() {
 		Random n = new Random();
 
-		for (int i = 0; i < 5; i++) { // i = quantidade de intervalos no
+		for (int i = 0; i < 1000000; i++) { // i = quantidade de intervalos no
 										// conjunto
 			conjunto.add(i, new Intervalo());
 		}
@@ -27,7 +27,7 @@ public class Conjuntos {
 		for (int i = 0; i < conjunto.size(); i++) {
 			int ts = n.nextInt(1000); // seta o random
 			int tf = n.nextInt(1000);
-
+			 
 			if (ts < tf) { // faz a verifica��o para que ts < tf
 				conjunto.get(i).setTs(ts); // TS recebe o random
 				conjunto.get(i).setTf(tf);
@@ -41,8 +41,10 @@ public class Conjuntos {
 	}
 
 	/*
-	 * @param  Um conjunto de intervalos
-	 * @return retorna um subconjunto com um resultado subOtimo sobre os intervalos de cada conjunto.
+	 * @param Um conjunto de intervalos
+	 * 
+	 * @return retorna um subconjunto com um resultado subOtimo sobre os intervalos
+	 * de cada conjunto.
 	 */
 	public ArrayList<Intervalo> subOtimo(Conjuntos c) { // TS em order crescente ou menor intervalo
 
@@ -55,23 +57,31 @@ public class Conjuntos {
 		});
 
 		c.getConjunto().stream().sorted();
-		
+
 		ArrayList<Intervalo> subOtimo = new ArrayList<>();
 
-		for (int i = 0; i < c.getConjunto().size(); i++) {
+		c.getConjunto().stream().sorted();
 
-			subOtimo.add(c.getConjunto().get(i));
-			System.out.println("adicionado: " + c.getConjunto().get(i));
+		Intervalo aux = c.getConjunto().get(0);
+		subOtimo.add(aux);
+
+		for (int i = 1; i < c.getConjunto().size(); i++) {
+			if (aux.getTf() <= c.getConjunto().get(i).getTs() ) {
+				subOtimo.add(c.getConjunto().get(i));
+				aux = c.getConjunto().get(i);
+			}
 		}
 
 		return subOtimo;
 	}
 
 	/*
-	 * @param  Um conjunto de intervalos
-	 * @return retorna um subconjunto com um resultado otimo sobre os intervalos de cada conjunto.
+	 * @param Um conjunto de intervalos
+	 * 
+	 * @return retorna um subconjunto com um resultado otimo sobre os intervalos de
+	 * cada conjunto.
 	 */
-	public static ArrayList<Intervalo> otimo(Conjuntos c) { // ordenar TF em ordem crescente
+	public ArrayList<Intervalo> otimo(Conjuntos c) { // ordenar TF em ordem crescente
 
 		Collections.sort(c.getConjunto(), new Comparator<Object>() {
 			public int compare(Object o1, Object o2) {
@@ -85,10 +95,14 @@ public class Conjuntos {
 
 		c.getConjunto().stream().sorted();
 
-		for (int i = 0; i < c.getConjunto().size(); i++) {
+		Intervalo aux = c.getConjunto().get(0);
+		otimo.add(aux);
 
-			otimo.add(c.getConjunto().get(i));
-			System.out.println("adicionou: " + c.getConjunto().get(i));
+		for (int i = 1; i < c.getConjunto().size(); i++) {
+			if (aux.getTf() <= c.getConjunto().get(i).getTs() ) {
+				otimo.add(c.getConjunto().get(i));
+				aux = c.getConjunto().get(i);
+			}
 		}
 
 		return otimo;

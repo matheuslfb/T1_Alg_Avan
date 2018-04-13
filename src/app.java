@@ -26,16 +26,19 @@ public class app {
 		// Conjuntos c = new Conjuntos();
 		// System.out.println(c.geraIntervalo());
 		// }
-		//
+		
 		Conjuntos c = new Conjuntos();
+		//SUBOTIMO
+		//System.out.println(c.geraIntervalo());
+		//System.out.println("ótimo: \n" + c.subOtimo(c));
+		//System.out.println("ordinariooo: \n" + c.getConjunto());
+		
+		//ÓTIMO
 		System.out.println(c.geraIntervalo());
-		c.otimo(c);
-		System.out.println(c.getConjunto());
-
-		Conjuntos d = new Conjuntos();
-		System.out.println(d.geraIntervalo());
-		d.subOtimo(d);
-		System.out.println(d.getConjunto());
+		System.out.println("ótimo: \n" + c.otimo(c));
+		//System.out.println("ordinariooo: \n" + c.getConjunto());
+		
+	
 	}
 
 }
