@@ -1,4 +1,7 @@
+import java.util.Collections;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 
 /*
@@ -17,20 +20,22 @@ import java.util.Random;
 
 public class app {
 
-	public static void main(String[] args) {
+	public static <T> void main(String[] args) {
 
-//		for(int i = 0; i<10; i++){
-//			Conjuntos c = new Conjuntos();
-//			System.out.println(c.geraIntervalo());
-//		}
-//		
+		// for(int i = 0; i<10; i++){
+		// Conjuntos c = new Conjuntos();
+		// System.out.println(c.geraIntervalo());
+		// }
+		//
 		Conjuntos c = new Conjuntos();
-		c.geraIntervalo();
-		
-		System.out.println(c.otimo(c));
-		
-		
+		System.out.println(c.geraIntervalo());
+		c.otimo(c);
+		System.out.println(c.getConjunto());
 
+		Conjuntos d = new Conjuntos();
+		System.out.println(d.geraIntervalo());
+		d.subOtimo(d);
+		System.out.println(d.getConjunto());
 	}
 
 }

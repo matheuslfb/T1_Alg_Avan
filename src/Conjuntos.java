@@ -1,41 +1,26 @@
 import java.util.*;
 
-public class Conjuntos implements Comparable<Conjuntos>{
+
+/*
+ * @author Matheus Lima Ferreira
+ * @date 15/04/2018
+ * 
+ */
+public class Conjuntos {
 
 	ArrayList<Intervalo> conjunto = new ArrayList<>();
 
 	// classe intervalo, que possui ts e tf como atributos
-	class Intervalo {
 
-		private int ts, tf;
-
-		public int getTs() {
-			return ts;
-		}
-
-		public void setTs(int ts) {
-			this.ts = ts;
-		}
-
-		public int getTf() {
-			return tf;
-		}
-
-		public void setTf(int tf) {
-			this.tf = tf;
-		}
-
-		@Override
-		public String toString() {
-
-			return "Intervalo [ts=" + ts + ", tf=" + tf + "] \n";
-		}
+	public ArrayList<Intervalo> getConjunto() {
+		return conjunto;
 	}
 
 	public ArrayList<Intervalo> geraIntervalo() {
 		Random n = new Random();
 
-		for (int i = 0; i < 1000000; i++) { // i = quantidade de intervalos no conjunto
+		for (int i = 0; i < 5; i++) { // i = quantidade de intervalos no
+										// conjunto
 			conjunto.add(i, new Intervalo());
 		}
 
@@ -54,57 +39,59 @@ public class Conjuntos implements Comparable<Conjuntos>{
 		}
 		return conjunto;
 	}
-	
-	
-	
-	
-	
 
-	public ArrayList<Intervalo> subOtimo(Conjuntos c) { // ts crescente ou menor intervalo
-		
-		c.geraIntervalo();
-		
-		
+	/*
+	 * @param  Um conjunto de intervalos
+	 * @return retorna um subconjunto com um resultado subOtimo sobre os intervalos de cada conjunto.
+	 */
+	public ArrayList<Intervalo> subOtimo(Conjuntos c) { // TS em order crescente ou menor intervalo
+
+		Collections.sort(c.getConjunto(), new Comparator<Object>() {
+			public int compare(Object o1, Object o2) {
+				Intervalo p1 = (Intervalo) o1;
+				Intervalo p2 = (Intervalo) o2;
+				return p1.getTs() < p2.getTs() ? -1 : (p1.getTs() > p2.getTs() ? +1 : 0);
+			}
+		});
+
+		c.getConjunto().stream().sorted();
 		
 		ArrayList<Intervalo> subOtimo = new ArrayList<>();
 
-		for (int i = 0; i < c.geraIntervalo().size(); i++) {
+		for (int i = 0; i < c.getConjunto().size(); i++) {
 
-			subOtimo.add(c.geraIntervalo().get(i));
+			subOtimo.add(c.getConjunto().get(i));
+			System.out.println("adicionado: " + c.getConjunto().get(i));
 		}
 
 		return subOtimo;
 	}
-	
-	
-	public ArrayList<Intervalo> otimo(Conjuntos c) { // ordenar TF em ordem crescente
+
+	/*
+	 * @param  Um conjunto de intervalos
+	 * @return retorna um subconjunto com um resultado otimo sobre os intervalos de cada conjunto.
+	 */
+	public static ArrayList<Intervalo> otimo(Conjuntos c) { // ordenar TF em ordem crescente
+
+		Collections.sort(c.getConjunto(), new Comparator<Object>() {
+			public int compare(Object o1, Object o2) {
+				Intervalo p1 = (Intervalo) o1;
+				Intervalo p2 = (Intervalo) o2;
+				return p1.getTf() < p2.getTf() ? -1 : (p1.getTf() > p2.getTf() ? +1 : 0);
+			}
+		});
+
 		ArrayList<Intervalo> otimo = new ArrayList<>();
 
-		c.geraIntervalo().sort(null);
-		for (int i = 0; i < c.geraIntervalo().size(); i++) {
-			
-			otimo.add(c.geraIntervalo().get(i));
-//
-//			Intervalo aux = c.geraIntervalo().get(i);
-//			Intervalo aux2 = c.geraIntervalo().get(i);
-//			if (aux.getTf() < aux2.getTf()) {
-//				otimo.add(aux);
-//			}
-//			
+		c.getConjunto().stream().sorted();
+
+		for (int i = 0; i < c.getConjunto().size(); i++) {
+
+			otimo.add(c.getConjunto().get(i));
+			System.out.println("adicionou: " + c.getConjunto().get(i));
 		}
 
 		return otimo;
-	}
-
-	@Override
-	public int compareTo(Conjuntos o) {
-		
-		
-		if(o.geraIntervalo()) {
-			return -1;
-		}
-		if()
-		return 0;
 	}
 
 }
