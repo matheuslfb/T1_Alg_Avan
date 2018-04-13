@@ -22,20 +22,21 @@ public class app {
 
 	public static <T> void main(String[] args) {
 
-		// for(int i = 0; i<10; i++){
-		// Conjuntos c = new Conjuntos();
-		// System.out.println(c.geraIntervalo());
-		// }
+		for(int i = 0; i<10; i++){
+		 Conjuntos c = new Conjuntos();
+		 System.out.println(c.geraIntervalo());
+		 System.out.println("ótimo: \n" + c.otimo(c));
+		 System.out.println("Sub-ótimo: \n" + c.subOtimo(c));
+		 }
 		
-		Conjuntos c = new Conjuntos();
 		//SUBOTIMO
 		//System.out.println(c.geraIntervalo());
 		//System.out.println("ótimo: \n" + c.subOtimo(c));
 		//System.out.println("ordinariooo: \n" + c.getConjunto());
 		
 		//ÓTIMO
-		System.out.println(c.geraIntervalo());
-		System.out.println("ótimo: \n" + c.otimo(c));
+		//System.out.println(c.geraIntervalo());
+		//System.out.println("ótimo: \n" + c.otimo(c));
 		//System.out.println("ordinariooo: \n" + c.getConjunto());
 		
 	

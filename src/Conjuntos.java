@@ -20,14 +20,14 @@ public class Conjuntos {
 		Random n = new Random();
 
 		for (int i = 0; i < 1000000; i++) { // i = quantidade de intervalos no
-										// conjunto
+			// conjunto
 			conjunto.add(i, new Intervalo());
 		}
 
 		for (int i = 0; i < conjunto.size(); i++) {
 			int ts = n.nextInt(1000); // seta o random
 			int tf = n.nextInt(1000);
-			 
+
 			if (ts < tf) { // faz a verifica��o para que ts < tf
 				conjunto.get(i).setTs(ts); // TS recebe o random
 				conjunto.get(i).setTf(tf);
@@ -66,7 +66,7 @@ public class Conjuntos {
 		subOtimo.add(aux);
 
 		for (int i = 1; i < c.getConjunto().size(); i++) {
-			if (aux.getTf() <= c.getConjunto().get(i).getTs() ) {
+			if (aux.getTf() <= c.getConjunto().get(i).getTs()) {
 				subOtimo.add(c.getConjunto().get(i));
 				aux = c.getConjunto().get(i);
 			}
@@ -99,7 +99,7 @@ public class Conjuntos {
 		otimo.add(aux);
 
 		for (int i = 1; i < c.getConjunto().size(); i++) {
-			if (aux.getTf() <= c.getConjunto().get(i).getTs() ) {
+			if (aux.getTf() <= c.getConjunto().get(i).getTs()) {
 				otimo.add(c.getConjunto().get(i));
 				aux = c.getConjunto().get(i);
 			}
