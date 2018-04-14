@@ -25,14 +25,20 @@ public class Conjuntos {
 		}
 
 		for (int i = 0; i < conjunto.size(); i++) {
-			int ts = n.nextInt(1000); // seta o random
-			int tf = n.nextInt(1000);
 
-			if (ts < tf) { // faz a verifica��o para que ts < tf
-				conjunto.get(i).setTs(ts); // TS recebe o random
+			int ts = n.nextInt(1001); // seta o random
+
+			int tf = n.nextInt(1001);
+
+			while(ts == tf) {
+				tf = n.nextInt(1001);
+			}
+			
+			if (ts < tf) { // faz a verificacao para que ts < tf
+				conjunto.get(i).setTs(ts);
 				conjunto.get(i).setTf(tf);
 			} else if (tf < ts) {
-				conjunto.get(i).setTs(tf); // TS recebe o random
+				conjunto.get(i).setTs(tf);
 				conjunto.get(i).setTf(ts);
 
 			}
@@ -59,8 +65,6 @@ public class Conjuntos {
 		c.getConjunto().stream().sorted();
 
 		ArrayList<Intervalo> subOtimo = new ArrayList<>();
-
-		c.getConjunto().stream().sorted();
 
 		Intervalo aux = c.getConjunto().get(0);
 		subOtimo.add(aux);
