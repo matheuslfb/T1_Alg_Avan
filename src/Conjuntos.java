@@ -7,7 +7,6 @@ import java.util.*;
  */
 public class Conjuntos {
 
-	private static final ArrayList<Intervalo> subOtimo = null;
 	ArrayList<Intervalo> conjunto = new ArrayList<>();
 
 	// classe intervalo, que possui ts e tf como atributos
@@ -19,8 +18,7 @@ public class Conjuntos {
 	public ArrayList<Intervalo> geraIntervalo() {
 		Random n = new Random();
 
-		for (int i = 0; i < 1000000; i++) { // i = quantidade de intervalos no
-			// conjunto
+		for (int i = 0; i < 1000000; i++) { // i = quantidade de intervalos no conjunto
 			conjunto.add(i, new Intervalo());
 		}
 
@@ -30,10 +28,10 @@ public class Conjuntos {
 
 			int tf = n.nextInt(1001);
 
-			while(ts == tf) {
+			while (ts == tf) {
 				tf = n.nextInt(1001);
 			}
-			
+
 			if (ts < tf) { // faz a verificacao para que ts < tf
 				conjunto.get(i).setTs(ts);
 				conjunto.get(i).setTf(tf);

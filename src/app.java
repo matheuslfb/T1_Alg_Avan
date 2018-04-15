@@ -26,9 +26,9 @@ public class app {
 		int subOtimo = 0;
 		
 		
-		ArrayList<Integer> sub = new ArrayList<>(); 
+		ArrayList<Double> sub = new ArrayList<>(); 
 
-		ArrayList<Integer> otimo = new ArrayList<>(); 
+		ArrayList<Double> otimo = new ArrayList<>(); 
 		
 		for (int i = 0; i < 10; i++) {
 			Conjuntos c = new Conjuntos();
@@ -40,18 +40,24 @@ public class app {
 			System.out.println(c.geraIntervalo());
 			System.out.println("ótimo: \n" + c.otimo(c));
 			System.out.println("Sub-ótimo: \n" + c.subOtimo(c));
-			sub.add(c.subOtimo(c).size()); // armazena em um vetor o tamanho de cada subconjunto sub-otimo
-			otimo.add(c.otimo(c).size()); //armazena em um vetor o tamanho de cada subconjunto otimo
+			sub.add((double) c.subOtimo(c).size()); // armazena em um vetor o tamanho de cada subconjunto sub-otimo
+			otimo.add((double) c.otimo(c).size()); //armazena em um vetor o tamanho de cada subconjunto otimo
 			countOtimo = countOtimo + c.otimo(c).size(); //somatório dos subconjuntos otimos
 			subOtimo = subOtimo + c.subOtimo(c).size(); //somatório dos subconjuntos sub-otimos
 		}
 		
-		for(int x : sub) {
-			Math.sqrt(x);
-		}
 		
-		System.out.println("Média do número elementos do subconjunto otimo: " + countOtimo/10);
-		System.out.println("Média do número de elementos do subconjunto sub-ótimo: "+ subOtimo/10);
+			double v = 0;
+			for(Double x : sub) {
+				v+= Math.pow(x, 2);
+			}
+			
+		
+		
+		
+		
+		System.out.println("Média do número elementos dos subconjuntos otimos: " + countOtimo/10);
+		System.out.println("Média do número de elementos dos subconjuntos sub-ótimos: "+ subOtimo/10);
 
 		// SUBOTIMO
 		// System.out.println(c.geraIntervalo());
